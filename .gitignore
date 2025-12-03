@@ -1,4 +1,5 @@
-node_modules
-agenda.db
-npm-debug.log*
+node_modules/
 .env
+agenda.db
+/data/
+*.db
