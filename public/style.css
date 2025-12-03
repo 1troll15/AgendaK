@@ -1,0 +1,349 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f6fb;
+  color: #111827;
+  line-height: 1.5;
+}
+
+/* TOPO */
+.topbar {
+  background: #0ea5e9;
+  color: #fff;
+  padding: 12px 0;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.15);
+}
+
+.topbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.topbar h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.topbar-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* LAYOUT GERAL */
+.layout {
+  max-width: 1200px;
+  margin: 24px auto 40px;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* CARDS */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.card h3 {
+  font-size: 0.95rem;
+  margin-top: 6px;
+  color: #111827;
+}
+
+/* FORMULÁRIOS */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+input[type="text"],
+input[type="time"],
+input[type="date"],
+select,
+textarea {
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  background: #f9fafb;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.25);
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+}
+
+/* LINHAS DE FORM */
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.form-row > .form-group {
+  flex: 1;
+}
+
+.form-row-actions {
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+/* BOTÕES */
+button,
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.2s, transform 0.05s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: #0ea5e9;
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(14, 165, 233, 0.35);
+}
+
+.btn-primary:hover {
+  background: #0284c7;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+.btn-danger {
+  background: #f97373;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #ef4444;
+}
+
+button:active,
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* LISTAS */
+.lista {
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 8px;
+  max-height: 360px;
+  overflow-y: auto;
+  font-size: 0.85rem;
+}
+
+.item-aluno,
+.item-horario,
+.item-agenda {
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.05s;
+}
+
+.item-aluno:hover,
+.item-horario:hover,
+.item-agenda:hover {
+  border-color: #0ea5e9;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.12);
+}
+
+.item-aluno.selecionado {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.4);
+}
+
+.item-horario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.item-horario select,
+.item-horario input[type="time"] {
+  padding: 4px 6px;
+  font-size: 0.75rem;
+}
+
+.item-horario .btn {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+}
+
+/* INFO DO DIA / ALUNO */
+.aluno-info,
+.hoje-info {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+/* GRADE SEMANAL */
+.grade-semanal {
+  max-height: none;
+  overflow: auto;
+}
+
+.tabela-grade {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.tabela-grade th,
+.tabela-grade td {
+  border: 1px solid #e5e7eb;
+  padding: 4px 6px;
+  text-align: center;
+}
+
+.tabela-grade th {
+  background: #eff6ff;
+  font-weight: 600;
+}
+
+.celula-vazia {
+  background: #f9fafb;
+}
+.celula-ok {
+  background: #dcfce7;
+}
+.celula-moderada {
+  background: #fef9c3;
+}
+.celula-cheia {
+  background: #fee2e2;
+}
+
+/* ESTATÍSTICAS */
+.card-stats {
+  grid-column: 1 / -1; /* ocupa largura inteira */
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.stat-pill {
+  background: #f9fafb;
+  border-radius: 999px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid #e5e7eb;
+}
+
+.stat-wide {
+  grid-column: span 2;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.stat-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* UTILIDADES */
+.escondido {
+  display: none;
+}
+
+/* RESPONSIVO EXTRA */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lista {
+    max-height: 280px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-row-actions {
+    justify-content: flex-start;
+  }
+}

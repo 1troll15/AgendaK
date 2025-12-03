@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda Kumon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>Agenda Kumon</h1>
+      <span class="topbar-subtitle">Painel de alunos</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- COLUNA 1: CADASTRO DE ALUNO -->
+    <section class="card">
+      <h2>Cadastrar aluno</h2>
+
+      <form id="form-aluno">
+        <div class="form-group">
+          <label for="aluno-nome">Nome do aluno</label>
+          <input type="text" id="aluno-nome" required>
+        </div>
+
+        <div class="form-group">
+          <label>Disciplinas</label>
+          <div class="checkbox-group">
+            <label>
+              <input type="checkbox" id="aluno-ingles">
+              Inglês
+            </label>
+            <label>
+              <input type="checkbox" id="aluno-portugues">
+              Português
+            </label>
+            <label>
+              <input type="checkbox" id="aluno-matematica">
+              Matemática
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="aluno-responsavel">Responsável</label>
+          <input type="text" id="aluno-responsavel">
+        </div>
+
+        <div class="form-group">
+          <label for="aluno-observacoes">Observações</label>
+          <textarea id="aluno-observacoes" rows="3"></textarea>
+        </div>
+
+        <div class="form-row form-row-actions">
+          <button type="submit" id="btn-salvar-aluno" class="btn btn-primary">
+            Salvar aluno
+          </button>
+          <button type="button" id="btn-novo-aluno" class="btn btn-secondary">
+            Novo aluno
+          </button>
+          <button type="button" id="btn-excluir-aluno" class="btn btn-danger">
+            Excluir
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- COLUNA 1: LISTA DE ALUNOS -->
+    <section class="card">
+      <h2>Alunos cadastrados</h2>
+
+      <div class="form-row" id="filtros-alunos">
+        <div class="form-group">
+          <label for="filtro-nome">Buscar por nome</label>
+          <input type="text" id="filtro-nome" placeholder="Digite o nome do aluno">
+        </div>
+        <div class="form-group">
+          <label for="filtro-disciplina">Disciplina</label>
+          <select id="filtro-disciplina">
+            <option value="">Todas</option>
+            <option value="ING">Inglês</option>
+            <option value="PORT">Português</option>
+            <option value="MAT">Matemática</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="lista-alunos" class="lista"></div>
+    </section>
+
+    <!-- COLUNA 2: HORÁRIOS DO ALUNO SELECIONADO -->
+    <section class="card">
+      <h2>Horários semanais do aluno selecionado</h2>
+
+      <p id="aluno-selecionado-info" class="aluno-info">
+        Nenhum aluno selecionado.
+      </p>
+
+      <div id="area-horarios" class="escondido">
+        <h3>Adicionar horário</h3>
+        <form id="form-horario">
+          <div class="form-group">
+            <label for="horario-dia">Dia da semana</label>
+            <select id="horario-dia" required>
+              <option value="">Selecione</option>
+              <option value="SEGUNDA">Segunda</option>
+              <option value="TERCA">Terça</option>
+              <option value="QUARTA">Quarta</option>
+              <option value="QUINTA">Quinta</option>
+              <option value="SEXTA">Sexta</option>
+              <option value="SABADO">Sábado</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="horario-inicio">Início</label>
+              <input type="time" id="horario-inicio" required>
+            </div>
+            <div class="form-group">
+              <label for="horario-fim">Fim</label>
+              <input type="time" id="horario-fim" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width">
+            Adicionar horário
+          </button>
+        </form>
+
+        <h3>Horários cadastrados</h3>
+        <div id="lista-horarios" class="lista"></div>
+      </div>
+    </section>
+
+    <!-- COLUNA 2/3: AGENDA POR DIA DA SEMANA -->
+    <section class="card">
+      <h2>Agenda por dia da semana</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="agenda-dia-select">Dia</label>
+          <select id="agenda-dia-select">
+            <option value="SEGUNDA">Segunda</option>
+            <option value="TERCA">Terça</option>
+            <option value="QUARTA">Quarta</option>
+            <option value="QUINTA">Quinta</option>
+            <option value="SEXTA">Sexta</option>
+            <option value="SABADO">Sábado</option>
+          </select>
+        </div>
+        <button id="btn-carregar-agenda" class="btn btn-primary">
+          Carregar agenda
+        </button>
+      </div>
+
+      <div id="agenda-dia-resultado" class="lista"></div>
+    </section>
+
+    <!-- COLUNA 3: PRESENÇAS POR DIA -->
+    <section class="card">
+      <h2>Presenças por dia</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="presencas-data">Data</label>
+          <input type="date" id="presencas-data">
+        </div>
+        <button id="btn-presencas-carregar" class="btn btn-primary">
+          Carregar
+        </button>
+      </div>
+
+      <p id="hoje-info" class="hoje-info"></p>
+
+      <div id="hoje-lista" class="lista"></div>
+    </section>
+
+    <!-- COLUNA 3: VISÃO SEMANAL -->
+    <section class="card">
+      <h2>Visão semanal</h2>
+      <div id="grade-semanal-container" class="lista grade-semanal">
+        Carregando grade semanal...
+      </div>
+    </section>
+
+    <!-- LINHA INTEIRA: ESTATÍSTICAS -->
+    <section class="card card-stats">
+      <h2>Estatísticas</h2>
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <span class="stat-label">Alunos ativos</span>
+          <span class="stat-value" id="stat-total-alunos">0</span>
+        </div>
+
+        <div class="stat-pill">
+          <span class="stat-label">Inglês</span>
+          <span class="stat-value" id="stat-total-ingles">0</span>
+        </div>
+
+        <div class="stat-pill">
+          <span class="stat-label">Português</span>
+          <span class="stat-value" id="stat-total-portugues">0</span>
+        </div>
+
+        <div class="stat-pill">
+          <span class="stat-label">Matemática</span>
+          <span class="stat-value" id="stat-total-matematica">0</span>
+        </div>
+
+        <div class="stat-pill stat-wide">
+          <span class="stat-label">Presenças na data selecionada</span>
+          <span class="stat-value" id="stat-presencas-data">
+            0 presentes / 0 faltas
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
