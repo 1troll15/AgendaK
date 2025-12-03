@@ -1,0 +1,4 @@
+node_modules
+agenda.db
+npm-debug.log*
+.env
