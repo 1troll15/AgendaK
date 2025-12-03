@@ -2,13 +2,8 @@ const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
 const fs = require("fs");
 
-<<<<<<< HEAD
-// Diretório configurável para armazenar o arquivo DB (via variável de ambiente)
-const DB_DIR = process.env.DB_DIR || path.join(__dirname, "data"); // ou outro diretório configurável
-=======
 // Diretorio para armazenar o arquivo DB (configurável via env)
 const DB_DIR = process.env.DB_DIR || path.join(__dirname, "data");
->>>>>>> e50fb3e39f8ee90ba685cb5ee01f012d0b35dd67
 const DB_FILE = process.env.DB_PATH || path.join(DB_DIR, "agenda.db");
 
 // Garante que o diretório exista
@@ -17,17 +12,10 @@ if (!fs.existsSync(DB_DIR)) {
   console.log(`Criado diretório para DB: ${DB_DIR}`);
 }
 
-<<<<<<< HEAD
-// Abre (ou cria) o arquivo agenda.db no caminho configurado
-const db = new sqlite3.Database(DB_FILE);
-
-// Garante que as chaves estrangeiras funcionem e cria as tabelas
-=======
 // abre (ou cria) o arquivo agenda.db no caminho configurado
 const db = new sqlite3.Database(DB_FILE);
 
 // garante que foreign keys funcionem e cria tabelas
->>>>>>> e50fb3e39f8ee90ba685cb5ee01f012d0b35dd67
 db.serialize(() => {
   db.run("PRAGMA foreign_keys = ON");
 
@@ -52,11 +40,7 @@ db.serialize(() => {
       dia_semana TEXT NOT NULL,
       hora_inicio TEXT NOT NULL,
       hora_fim TEXT NOT NULL,
-<<<<<<< HEAD
-      FOREIGN KEY (aluno_id) REFERENCES alunos(id)
-=======
       FOREIGN KEY (aluno_id) REFERENCES alunos(id) ON DELETE CASCADE
->>>>>>> e50fb3e39f8ee90ba685cb5ee01f012d0b35dd67
     )
   `);
 
